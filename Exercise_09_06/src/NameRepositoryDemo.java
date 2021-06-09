@@ -16,13 +16,16 @@ public class NameRepositoryDemo {
         nameRepository.addName("Julie");
         nameRepository.addName("Lora");
 
-        for (Iterator iterator1 = nameRepository.getForwardIterator(); iterator1.hasNext();){
-            String name = (String) iterator1.next();
+        //Print name list from left to right
+        for (Iterator iterator = nameRepository.getForwardIterator(); iterator.hasNext();){
+            String name = (String) iterator.next();
             System.out.println("Name: " + name);
         } 
 
-        for (Iterator iterator2 = nameRepository.getBackwardIterator(); iterator2.hasNext();){
-            String name = (String) iterator2.next();
+        //Error
+        //Print name list from right to left
+        for (Iterator iterator = nameRepository.getBackwardIterator(); iterator.hasNext();){
+            String name = (String) iterator.next();
             System.out.println("Name: " + name);
         } 
     }

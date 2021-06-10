@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Collectors;  
 
 public class NameRepository implements Container{
     /** Previous Exercise
@@ -39,11 +40,6 @@ public class NameRepository implements Container{
         @Override
         public boolean hasNext(){
             return (index < nameList.size());
-
-            /**if(index < nameList.size()){
-                return true;
-            }
-            return false;**/
         }
 
         @Override
@@ -66,10 +62,7 @@ public class NameRepository implements Container{
 
         @Override 
         public boolean hasNext(){
-            if (index1 >= 0){
-                return true;
-            }
-            return false;
+            return (index1 >= 0);
         }
 
         @Override
@@ -80,6 +73,31 @@ public class NameRepository implements Container{
             return null;
         }
 
+    }
+
+    //Print name lby alphabetical order
+    @Override
+    public Iterator getAlphabeticalIterator(){
+        return new alphabeticalIterator();
+    }
+
+    private class alphabeticalIterator implements Iterator{
+        int index; 
+        //Alphabetical sorted list
+        List<String> sortedNameList = nameList.stream().sorted().collect(Collectors.toList());  
+
+        @Override
+        public boolean hasNext(){
+            return (index < nameList.size());
+        }
+
+        @Override
+        public Object next(){
+            if (this.hasNext()){
+                return sortedNameList.get(index++);
+            }
+            return null;
+        }
     }
 
 }

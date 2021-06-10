@@ -38,10 +38,12 @@ public class NameRepository implements Container{
 
         @Override
         public boolean hasNext(){
-            if (index < nameList.size()){
+            return (index < nameList.size());
+
+            /**if(index < nameList.size()){
                 return true;
             }
-            return false;
+            return false;**/
         }
 
         @Override
@@ -53,7 +55,6 @@ public class NameRepository implements Container{
         }
     }
 
-    //Error
     //Print name list from right to left
     @Override
     public Iterator getBackwardIterator(){
@@ -61,11 +62,11 @@ public class NameRepository implements Container{
     }
 
     private class backwardIterator implements Iterator{
-        int index = nameList.size() - 1;
+        int index1 = nameList.size() - 1;
 
         @Override 
         public boolean hasNext(){
-            if (index <= 0){
+            if (index1 >= 0){
                 return true;
             }
             return false;
@@ -74,7 +75,7 @@ public class NameRepository implements Container{
         @Override
         public Object next(){
             if(this.hasNext()){
-                return nameList.get(index--);
+                return nameList.get(index1--);
             }
             return null;
         }

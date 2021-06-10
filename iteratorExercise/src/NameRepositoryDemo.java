@@ -16,7 +16,6 @@ public class NameRepositoryDemo {
         nameRepository.addName("Bill");
         nameRepository.addName("Phuong Nhu");
 
-        
         //Print name list from left to right
         System.out.println("Print name list from left to right");
         for (Iterator iterator = nameRepository.getForwardIterator(); iterator.hasNext();){
